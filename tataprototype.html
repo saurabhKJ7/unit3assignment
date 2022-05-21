@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    const carfeatures = {
+        fueltype: "Petrol",
+        transmissiontype: "Automatic",
+        airconditioner: "Present",
+        powerstreeing: "Present",
+        powerwindow: "Present",
+        airbag: "Present",
+        brakingsystem: "Present",
+    };
+
+   
+
+    const tatapunch = Object.create(carfeatures, { carname: { value: "Punch" } });
+
+    const tatanexon = Object.create(carfeatures, { carname: { value: "Nexon" } });
+    const tataharrier = Object.create(carfeatures, { carname: { value: "Harrier" } });
+
+    console.log(tatapunch);
+    console.log(tatanexon);
+    console.log(tataharrier);
+
+
+    function Carfeatures(name){
+        this.carname=name
+        this.fueltype= "Petrol";
+        this.transmissiontype= "Automatic";
+        this.airconditioner= "Present";
+        this.powerstreeing= "Present";
+        this.powerwindow= "Present";
+        this.airbag="Present";
+        this.brakingsystem="Present";
+    }
+
+    let punch=new Carfeatures("punch")
+    console.log(punch)
+    Carfeatures.prototype.price = "6 lakh rs";
+</script>
