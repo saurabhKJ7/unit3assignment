@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #container {
+            width: 80%;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 100px;
+            margin: auto;
+        }
+
+        #container>div {
+            margin-top: 40px;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+        }
+
+        div>img {
+            width: 100%;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+
+        #container>div>p+img {
+            width: 50%;
+            height: 60px;
+            margin-top: -20px;
+            margin-bottom: 5px;
+        }
+
+
+
+        #container>div>p {
+            margin-top: -20px;
+            color: rgb(75, 72, 72);
+            font-size: 17px;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="sort-lh" onclick="sorthigh()">Sort by low rating to high</button>
+    <button id="sort-hi" onclick="sortlow()">Sort by high rating to low</button>
+    <div id="container"></div>
+    </div>
+</body>
+
+</html>
+<script>
+    var moviearr = JSON.parse(localStorage.getItem("movies"))
+    console.log(moviearr)
+    display(moviearr)
+    function display(moviearr) {
+        document.getElementById("container").innerHTML="";
+        moviearr.forEach(function (elem) {
+            var box = document.createElement("div");
+            var moviePicture = document.createElement("img");
+            moviePicture.setAttribute("src", elem.imageurl);
+            var movieName = document.createElement("h3");
+            movieName.innerText = elem.name;
+            var imbd = document.createElement("p");
+            imbd.innerText = elem.imbd+"/10 imbd";
+            var gen = document.createElement("p");
+            gen.innerText = elem.genres;
+
+            box.append(moviePicture, movieName, imbd, gen);
+            console.log(box)
+            document.querySelector("#container").append(box);
+        });
+    }
+    function sorthigh() {
+
+        moviearr.sort(function (a, b) {
+            return a.imbd - b.imbd;
+        });
+        display(moviearr);
+
+    }
+    function sortlow() {
+
+        moviearr.sort(function (a, b) {
+            return b.imbd - a.imbd;
+        });
+        display(moviearr);
+
+    }
+</script>
