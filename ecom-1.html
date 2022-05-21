@@ -1,0 +1,54 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form>
+      <input id="name" type="text" placeholder="Product name" />
+      <input id="category" type="text" placeholder="Category" />
+      <input id="image" type="text" placeholder="image url" />
+      <input id="price" type="number" placeholder="Price" />
+      <select id="gender">
+        <option value="male">male</option>
+        <option value="female">female</option>
+      </select>
+      <input id="sold" type="text" placeholder="True/False" />
+     
+
+      <input type="submit" value="ADD" />
+    </form>
+  </body>
+</html>
+
+<script>
+    let productarr=[]
+  let form=document.querySelector("form")
+  form.addEventListener("submit", myFunction);
+
+  function productdetail(name,category,imageurl,price,gender,sold){
+      this.name=name;
+      this.category=category;
+      this.imageurl=imageurl;
+      this.price=price;
+      this.gender=gender;
+      this.sold=sold;
+  }
+
+  function myFunction() {
+    event.preventDefault();
+    let name=form.name.value;
+    let category=form.category.value;
+    let imageurl=form.image.value;
+    let price=form.price.vlaue;
+    let gender=form.gender.value;
+    let sold=form.sold.value;
+    let details= new productdetail(name,category,imageurl,price,gender,sold)
+    productarr.push(details)
+    localStorage.setItem('products',JSON.stringify(productarr))
+  }
+</script>
