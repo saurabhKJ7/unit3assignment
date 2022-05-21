@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    let amar = {
+        name:"amar",
+        profession: "singer",
+    };
+
+    let akbar = {
+        name:"akbar",
+        profession: "chef",
+    };
+
+    let anthony = {
+        name:'anthony',
+        profession: "magician",
+    };
+
+    function skill(pro) {
+        console.log(this.name+" "+pro); 
+    }
+    skill.call(amar,akbar.profession)
+    skill.call(akbar,amar.profession)
+    skill.call(anthony,akbar.profession)
+    skill.call(amar,anthony.profession)
+
+</script>
