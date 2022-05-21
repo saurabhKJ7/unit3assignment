@@ -1,0 +1,50 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form>
+      <input id="name" type="text" placeholder="movie name" />
+      <input id="release" type="text" placeholder="ReleaseDate" />
+      <input id="image" type="text" placeholder="movieImage url" />
+      <input id="imbd" type="number" placeholder="IMBD Rating" />
+      
+      <input id="genres" type="text" placeholder="Movie Genres" />
+     
+
+      <input type="submit" value="ADD MOVIE DETAILS" />
+    </form>
+  </body>
+</html>
+
+<script>
+    let moviesarr=[]
+  let form=document.querySelector("form")
+  form.addEventListener("submit", myFunction);
+
+  function Moviedetail(name,release,imageurl,imbd,genres){
+      this.name=name;
+      this.release=release;
+      this.imageurl=imageurl;
+      this.imbd=imbd;
+      this.genres=genres;
+  }
+
+  function myFunction() {
+    event.preventDefault();
+    let name=form.name.value;
+    let release=form.release.value;
+    let imageurl=form.image.value;
+    let imbd=form.imbd.vlaue;
+    let genres=form.genres.value;
+    let details= new Moviedetail(name,release,imageurl,imbd,genres)
+    moviesarr.push(details)
+    localStorage.setItem('movies',JSON.stringify(moviesarr))
+    form.reset()
+  }
+</script>
