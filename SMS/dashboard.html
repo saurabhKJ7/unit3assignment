@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        a{
+            text-decoration: none;
+            font-size: 20px;
+            margin-left: 40px; 
+            color: black;          
+        }
+        #display>p{
+            padding: 10px;
+        }
+     
+      #display{
+          display: flex;
+          justify-content:flex-start;
+          justify-items:center ;
+          width: 100%;
+          height: auto;
+          background-color:rgb(247, 243, 239) ;
+      }
+      #count{
+          display: flex;
+          margin: auto;
+          background-color:rgb(247, 243, 239) ;
+          width: 100%;
+          height: auto;   
+      }
+      #count>div{
+          font-size: 20px;
+          margin-left: 50px;
+          
+      }
+     
+      #list {
+            width: 80%;
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 40px;
+            margin: auto;
+        }
+
+        #list>div {
+            margin-top: 40px;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+        }
+
+        #list>div>img {
+            width: 100%;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+
+       
+        #list>div>h3 {
+            color: rgb(75, 72, 72);
+        }
+        #list>div>p {
+            color: rgb(75, 72, 72);
+            font-size: 16px;
+            margin-top: 5px;
+        }
+        #list>div>button{
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+    </style>
+    </style>
+  </head>
+
+  <body>
+      <div id="display">
+          <p><a href="dashboard.html">DashBoard</a></p>
+          <p><a href="home.html">MainPage</a></p>
+
+      </div>
+      <div id="count">
+      </div>
+      <div id="list">
+         
+           
+      </div>
+   
+    </div>
+  </body>
+</html>
+
+<script>
+    let detailarr=JSON.parse(localStorage.getItem("studentDetails"))||[];
+
+
+    let batchobj={}
+        for(let i=0;i<detailarr.length;i++){
+            if(batchobj[detailarr[i].batch]==undefined){
+                batchobj[detailarr[i].batch]=1
+            }else{
+                batchobj[detailarr[i].batch]+=1
+            }
+        }
+        
+    for(let k in batchobj){
+        let div=document.createElement("div")
+        div.innerText=k+"-TotalNo-"+batchobj[k]
+       
+        count.append(div)
+    }
+   
+
+    display(detailarr)
+    function display(detailarr) {
+        document.getElementById("list").innerHTML="";
+       
+        detailarr.forEach(function (elem,index) {
+            let box = document.createElement("div");
+            
+            let picture = document.createElement("img");
+            picture.setAttribute("src", elem.img);
+            let name = document.createElement("h3");
+            name.innerText = elem.name;
+            let unit = document.createElement("p");
+            unit.innerText = elem.unit;
+            let course = document.createElement("p");
+            course.innerText = elem.course;
+            let batch = document.createElement("p");
+            batch.innerText = elem.batch;
+            let btn=document.createElement("button");
+            btn.innerHTML="Remove"
+            btn.addEventListener("click",function(){
+                remove(index);
+            })
+            box.append(picture,name,unit,course,batch,btn);
+            document.querySelector("#list").append(box);
+            
+        });
+    }
+    function remove(index){
+        let detailarr=JSON.parse(localStorage.getItem("studentDetails"))||[];
+
+        let newdetailarr=detailarr.filter(function(el,i){
+            if(i==index){
+                let trash=JSON.parse(localStorage.getItem("trash"))||[];
+                trash.push(el);
+                localStorage.setItem("trash",JSON.stringify(trash));
+            }else{
+                return i!== index
+            }
+        })
+        localStorage.setItem("studentDetails",JSON.stringify(newdetailarr))
+    display(newdetailarr)
+    window.location.href = "dashboard.html";
+    
+    }
+  
+   
+    
+</script>
+
