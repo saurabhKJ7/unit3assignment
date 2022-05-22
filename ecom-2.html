@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        a{
+            text-decoration: none;
+            font-size: 20px;
+            margin-left: 40px; 
+            color: black;          
+        }
+        #display>p{
+            padding: 10px;
+        }
+     
+      #display{
+          display: flex;
+          justify-content:flex-start;
+          justify-items:center ;
+          width: 100%;
+          height: auto;
+          background-color:rgb(247, 243, 239) ;
+      }
+      #count{
+          display: flex;
+          margin: auto;
+          background-color:rgb(247, 243, 239) ;
+          width: 100%;
+          height: auto;   
+      }
+      #count>div{
+          font-size: 20px;
+          margin-left: 50px;
+          
+      }
+     
+      #list {
+            width: 80%;
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 40px;
+            margin: auto;
+        }
+
+        #list>div {
+            margin-top: 40px;
+            border-radius: 10px;
+            box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+        }
+
+        #list>div>img {
+            width: 100%;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+
+       
+        #list>div>h3 {
+            color: rgb(75, 72, 72);
+        }
+        #list>div>p {
+            color: rgb(75, 72, 72);
+            font-size: 16px;
+            margin-top: 5px;
+        }
+        #list>div>button{
+            display: block;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+        #list>div>#sold{
+            padding: 5px 10px 5px 10px;
+            border: 0px;
+            border-radius: 10;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        }
+
+
+    </style>
+    </style>
+  </head>
+
+  <body>
+     
+      <div id="count">
+      </div>
+      <div id="list">
+         
+           
+      </div>
+   
+    </div>
+  </body>
+</html>
+
+<script>
+    let productarr=JSON.parse(localStorage.getItem("products"))||[];
+    display(productarr)
+
+   
+        
+    let div=document.createElement("div")
+    div.innerText=productarr.length;
+    
+    
+    count.append(div)
+    
+   
+
+    display(productarr)
+    function display(productarr) {
+        document.getElementById("list").innerHTML="";
+       
+        productarr.forEach(function (elem,index) {
+            let box = document.createElement("div");
+            
+            let picture = document.createElement("img");
+            picture.setAttribute("src", elem.imageurl);
+            let name = document.createElement("h3");
+            name.innerText = elem.name;
+            let category = document.createElement("p");
+            category.innerText = elem.category;
+            let gender = document.createElement("p");
+            gender.innerText = elem.gender;
+            var btn  = document.createElement("button");
+            btn.setAttribute("id","sold")
+            btn.innerText = "sold"
+            if(elem.sold)
+                btn.style.background="blue";
+            else
+                btn.style.background="red";
+            btn.addEventListener("click", function()
+            {
+               eventOccur(elem, index, btn);
+            })
+           
+            let btn2=document.createElement("button");
+            btn2.innerHTML="Remove"
+            btn2.addEventListener("click",function(){
+                remove(index);
+            })
+            box.append(picture,name,category,gender,btn,btn2);
+            document.querySelector("#list").append(box);
+            
+        });
+
+    }
+    function eventOccur(el, index, btn)
+    {
+                console.log(el, index)
+                if(el.sold)
+                {
+                    btn.style.background="red";
+                    el.sold = false;
+                }
+                else{
+                    btn.style.background="blue";
+                    el.sold = true;
+                }
+                localStorage.setItem("products", JSON.stringify(productarr));
+                display(productarr);
+  
+    }
+    function remove(index){
+        let productarr=JSON.parse(localStorage.getItem("products"))||[];
+
+        let newproductarr=productarr.filter(function(el,i){
+            if(i==index){
+                let trash=JSON.parse(localStorage.getItem("trash"))||[];
+                trash.push(el);
+                localStorage.setItem("trash",JSON.stringify(trash));
+            }else{
+                return i!== index
+            }
+        })
+        localStorage.setItem("products",JSON.stringify(newproductarr))
+    display(newproductarr)
+    window.location.href = "ecom-2.html";
+    
+    }
+  
+   
+    
+</script>
+
