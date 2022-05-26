@@ -1,0 +1,87 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+body{
+    background-color: #0C111B;
+}
+
+#nav{
+    display: flex;
+    height: auto;
+    width: 100%;
+    justify-content: center;
+    background-color: #131A28;
+    box-shadow: rgba(85, 85, 85, 0.35) 0px 5px 15px;
+    margin-bottom: 40px;
+}
+h1{
+    padding: 10px;
+    color: white;
+    font-family: sans-serif;
+}
+#search{
+       display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 40px;
+}
+input{
+    width: 30%;
+    height: 40px;
+    border-radius: 10px;
+    border: none;
+    box-shadow: rgba(252, 85, 85, 0.19) 0px 10px 20px, rgba(248, 85, 85, 0.23) 0px 6px 6px;
+    font-size: 16px;
+    padding-left: 15px;
+    margin-right: 15px;
+    background-color: #f1f1f1;
+}
+button{
+    width: 80px;
+    height: 40px;
+    border: none;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+    font-size: 16px;
+    border-radius: 10px;
+    margin-right: 15px;
+    background-color: #48484A;
+    color: white;
+
+}
+
+#movie{
+
+    width: 50%;
+    height: 350px;
+    display: flex;
+    margin: auto;
+    box-shadow: rgba(189, 178, 178, 0.3) 0px 19px 38px, rgba(196, 185, 185, 0.22) 0px 15px 12px;
+    border-radius: 30px;
+}
+#movie>div{
+    width: 40%;
+   
+    border-radius: 30px;
+}
+#movie>div>img{
+    width: 100%;
+    height: 100%;
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+}
+
+#movie>div+div{
+    
+    color: white;
+    width: 60%;
+    padding: 20px;
+}
+p{
+    padding: 10px 0 10px 10px;
+    font-family: sans-serif ;
+}
+h3{
+    padding: 10px 0 10px 10px;
+}
+
