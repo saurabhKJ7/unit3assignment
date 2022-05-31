@@ -19,6 +19,7 @@
 
       <input type="submit" value="ADD MOVIE DETAILS" />
     </form>
+    <button><a href="index.html">Movie List</a></button>
   </body>
 </html>
 
@@ -40,7 +41,7 @@
     let name=form.name.value;
     let release=form.release.value;
     let imageurl=form.image.value;
-    let imbd=form.imbd.vlaue;
+    let imbd=form.imbd.value;
     let genres=form.genres.value;
     let details= new Moviedetail(name,release,imageurl,imbd,genres)
     moviesarr.push(details)
