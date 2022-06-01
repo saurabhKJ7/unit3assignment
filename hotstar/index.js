@@ -22,10 +22,31 @@ function appendMovies(movie){
     movie.forEach(function(el){
         let p=document.createElement('p')
         p.innerText=el.original_title
+        p.addEventListener("click",function(){
+          detail(el);
+        })
         
         movieDiv.append(p)
     })
 
+
+}
+function detail(el){
+  console.log(el)
+  movieDiv.innerHTML=null
+  let img=document.createElement("img")
+  
+  img.src=`https://image.tmdb.org/t/p/w500${el.poster_path}`
+  console.log(img.src)
+  let p=document.createElement('p')
+        p.innerText=`Title ${el.original_title}`
+        let p1=document.createElement('p')
+        
+        p1.innerText=`Releasing Date ${el.release_date}`
+        let p2=document.createElement('p')
+        p2.innerText=`Rating ${el.vote_average}`
+
+  movieDiv.append(img,p,p1,p2)
 
 }
 
