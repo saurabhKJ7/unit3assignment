@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+
+   
+
+    class Tata{
+        constructor(){
+            
+            this.fueltype= "Petrol";
+            this.transmissiontype= "Automatic";
+            this.airconditioner= "Present";
+            this.powerstreeing= "Present";
+            this.powerwindow= "Present";
+            this.airbag="Present";
+            this.brakingsystem="Present";
+        }
+    }
+   
+
+    class Tatamodel extends Tata{
+        constructor(name,price,color){
+            super();
+            this.carname=name;
+            this.price=price;
+            this.modelcolor=color;
+        }
+    }
+    let model1=new Tatamodel("Nexon","Rs-9lakh","Black")
+    let model2=new Tatamodel("Harrier","Rs-14lakh","White")
+    let model3=new Tatamodel("Altoz","Rs-7lakh","Red")
+    console.log(model1)
+    console.log(model2)
+    console.log(model3)
+
+
+</script>
