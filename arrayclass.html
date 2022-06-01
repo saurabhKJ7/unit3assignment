@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+
+    class Stack{
+        constructor(){
+            this.length=0;
+            this.stack=[];
+        }
+
+        push(n){
+            this.stack[this.length]=n
+            this.length++
+        }
+
+        pop(){
+            delete this.stack[this.length-1];
+            this.length--  
+        }
+        peek(){
+            console.log(this.stack[this.length-1])
+        }
+        print(){
+            console.log(this.stack)
+        }
+        len(){
+            console.log(this.length)
+        }
+        reverse(){
+            let rev=[]
+            let a=0;
+            for(let i=this.length-1;i>=0;i--){
+                rev[a]=this.stack[i]
+                a++
+            }
+            console.log(rev)
+        }
+    }
+
+    let s1=new Stack();
+    s1.push(1)
+    s1.push(2)
+    
+    s1.push(5)
+    s1.print()
+    s1.len()
+    s1.reverse()
+
+   
+
+</script>
